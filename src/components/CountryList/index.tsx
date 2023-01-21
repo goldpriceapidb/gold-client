@@ -1,6 +1,8 @@
 import { get, set } from "idb-keyval"
 import { useEffect, useRef, useState } from "react"
 import Fuse from "fuse.js/dist/fuse"
+import styles from "./countryList.module.css"
+import logo from "../../assets/logo.png"
 import {
 	IDB_GOLD_PRICE_STORAGE_KEY,
 	FETCHED_DATA,
@@ -58,18 +60,27 @@ export default function CountryList(): JSX.Element {
 
 	return (
 		<>
-			<input
-				type="text"
-				placeholder="Search for your country"
-				onInput={search}
-				ref={inputRef}
-			/>
+			<div className={styles.hero}>
+				<img src={logo} aria-label="Logo" alt="Logo" width={50} height={50} />
+				<span>Check Gold Rate</span>
+			</div>
+			<div className={styles.searchContainer}>
+				<input
+					className={styles.searchInput}
+					type="text"
+					placeholder="Search for your country"
+					onInput={search}
+					ref={inputRef}
+				/>
+			</div>
 
-			{contents !== undefined &&
-				contents.length !== 0 &&
-				contents.map((e: CountryType) => (
-					<Country country={e} key={e._id} />
-				))}
+			<div className={styles.countryList}>
+				{contents !== undefined &&
+					contents.length !== 0 &&
+					contents.map((e: CountryType) => (
+						<Country country={e} key={e._id} />
+					))}
+			</div>
 		</>
 	)
 }

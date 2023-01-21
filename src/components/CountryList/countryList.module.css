@@ -1,0 +1,48 @@
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 1rem auto;
+    margin-top: 10rem;
+}
+
+.hero span {
+    font-size: 1.6rem;
+    align-items: center;
+    margin-left: 0.5rem;
+}
+
+.countryList {
+	display: flex;
+	flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    max-width: 89vw;
+    margin: 0 auto;
+}
+
+.searchInput {
+    width: 300px;
+    padding: 0.5rem 0.4rem;
+    margin: 1rem;
+    border-radius: 8px;
+    border: 1px solid #44444444;
+    outline: none;
+    font-size: 1.3rem;
+    font-family: "GoogleSansMedium";
+}
+
+.searchContainer {
+    display: flex;
+    width: 90vw;
+    margin: 0 auto;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+@media screen and (max-width: 480px) {
+    .countryList {
+        max-width: unset;
+    }
+}
