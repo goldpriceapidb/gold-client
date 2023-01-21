@@ -1,11 +1,12 @@
 import { get, set } from "idb-keyval"
-import { useEffect, useState } from "react"
-import { IDB_GOLD_PRICE_STORAGE_KEY, FETCHED_DATA, CountryType } from "./Exports"
+import { useEffect, useRef, useState } from "react"
+import Fuse from "fuse.js/dist/fuse"
+import { IDB_GOLD_PRICE_STORAGE_KEY, FETCHED_DATA, CountryType, FuseResults } from "./Exports"
 import Country from "./Country"
 
 export default function CountryList(): JSX.Element {
 
-
+    let [countryList, setCountryList] = useState([])
     let [contents, setContents] = useState([])
     let inputRef = useRef<HTMLInputElement>(null)
     
@@ -14,9 +15,8 @@ export default function CountryList(): JSX.Element {
         
         async function fetchStuff() {
             let countries = await get(IDB_GOLD_PRICE_STORAGE_KEY)
-            console.log(countries)
-            fuse = new Fuse(countries, {findAllMatches: true})
-            setContents(countries)
+            setCountryList(countries)
+            // setContents(countries)
         }
 
         let intervalId = setInterval(async() => {
@@ -30,10 +30,23 @@ export default function CountryList(): JSX.Element {
         }, 1000)
 
         fetchStuff()
-
+        
         return () => clearInterval(intervalId)
-
+        
     }, [])
+    
+    function search() {
+        let term : string = inputRef?.current?.value || ""
+        
+        let options = {
+            keys: ['countryName', 'countryName']
+        }
+
+        let fuse = new Fuse(countryList, options)
+        let result = fuse.search(term)
+        
+    }
+
 
 	return <>
 
