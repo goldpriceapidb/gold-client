@@ -1,5 +1,12 @@
+import { get, set } from "idb-keyval/dist/compat"
 import { useEffect, useState } from "react"
 
+import {
+	FETCH_URL,
+	IDB_GOLD_PRICE_STORAGE_KEY,
+	IDB_LAST_UPDATED_TIME,
+    FETCHED_DATA
+} from "./Exports"
 
 function LastFetched(): JSX.Element {
 	let [lastUpdated, setLastUpdated] = useState("loading...")
