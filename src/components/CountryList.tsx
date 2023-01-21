@@ -5,6 +5,7 @@ import Country from "./Country"
 
 export default function CountryList(): JSX.Element {
 
+
     let [contents, setContents] = useState([])
     
     
@@ -15,8 +16,18 @@ export default function CountryList(): JSX.Element {
             setContents(countries)
         }
 
+        let intervalId = setInterval(async() => {
+            let didWeFetch = await get(FETCHED_DATA)
+            if(didWeFetch) {
+                await set(FETCHED_DATA, false)
+                console.log("Changed status")
+            }
+            fetchStuff()
+        }, 1000)
 
         fetchStuff()
+
+        return () => clearInterval(intervalId)
 
     }, [])
 
@@ -32,6 +43,7 @@ export default function CountryList(): JSX.Element {
     }
 
     
+
     </>
 
 }
