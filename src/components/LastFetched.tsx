@@ -4,6 +4,18 @@ import { useEffect, useState } from "react"
 function LastFetched(): JSX.Element {
 	let [lastUpdated, setLastUpdated] = useState("loading...")
 
+    async function getLastUpdated() {
+        let time = await get(IDB_LAST_UPDATED_TIME)
+        if (time === undefined) {
+            time = await updateData()
+        }
+        return timeDifference(new Date().getTime(), time)
+    }
+	
+	async function refetch() {
+        await updateData()
+		setLastUpdated("Just now")
+	}
 
 	return (
 		<>
