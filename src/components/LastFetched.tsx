@@ -1,3 +1,27 @@
+import { useEffect, useState } from "react"
+
+
+function LastFetched(): JSX.Element {
+	let [lastUpdated, setLastUpdated] = useState("loading...")
+
+
+	return (
+		<>
+			<div>
+				<p>Last refreshed: {lastUpdated}</p>
+				<button
+					type="button"
+					aria-label="Re-fetch now"
+					onClick={refetch}
+				>
+					Refresh
+				</button>
+			</div>
+		</>
+	)
+}
+
+export default LastFetched
 
 async function updatedLastFetch() {
     let time = new Date().getTime()
