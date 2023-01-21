@@ -7,6 +7,7 @@ export default function CountryList(): JSX.Element {
 
 
     let [contents, setContents] = useState([])
+    let inputRef = useRef<HTMLInputElement>(null)
     
     
     useEffect(() => {
@@ -35,8 +36,9 @@ export default function CountryList(): JSX.Element {
     }, [])
 
 	return <>
-    
 
+    <input type="text" placeholder="Search for your country" onInput={search} ref={inputRef} />
+    
     {
         contents !== undefined &&
         contents.length !== 0 &&
