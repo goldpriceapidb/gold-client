@@ -16,6 +16,14 @@ function LastFetched(): JSX.Element {
         await updateData()
 		setLastUpdated("Just now")
 	}
+    
+	useEffect(() => {
+        let intervalId = setInterval(async () => {
+            let difference = await getLastUpdated()
+            setLastUpdated(difference)
+        }, 1000)
+        return () => clearInterval(intervalId)
+	}, [])
 
 	return (
 		<>
