@@ -43,3 +43,7 @@ async function updateData() {
     await updatedEntry()
     return await updatedLastFetch()
 }
+
+async function updatedEntry() {
+    await set(FETCHED_DATA, true)
+}
