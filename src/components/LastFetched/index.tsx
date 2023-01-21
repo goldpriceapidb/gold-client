@@ -6,7 +6,7 @@ import {
 	IDB_GOLD_PRICE_STORAGE_KEY,
 	IDB_LAST_UPDATED_TIME,
     FETCHED_DATA
-} from "./Exports"
+} from "../Exports"
 
 function LastFetched(): JSX.Element {
 	let [lastUpdated, setLastUpdated] = useState("loading...")

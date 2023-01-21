@@ -6,8 +6,8 @@ import {
 	FETCHED_DATA,
 	CountryType,
 	FuseResults,
-} from "./Exports"
-import Country from "./Country"
+} from "../Exports"
+import Country from "../Country"
 
 export default function CountryList(): JSX.Element {
 	let [countryList, setCountryList] = useState([])

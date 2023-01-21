@@ -1,4 +1,5 @@
-import { CountryType } from "./Exports"
+import { CountryType } from "../Exports"
+import styles from "./country.module.css"
 
 type ExportedProps = {
 	country: CountryType
