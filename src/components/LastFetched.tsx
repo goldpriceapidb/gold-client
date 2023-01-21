@@ -38,3 +38,8 @@ function timeDifference(current: number, previous: number): string {
     }
 }
 
+async function updateData() {
+    await updatePrice()
+    await updatedEntry()
+    return await updatedLastFetch()
+}
