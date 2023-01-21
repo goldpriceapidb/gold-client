@@ -1,6 +1,10 @@
+import CountryList from "./components/CountryList"
+import LastFetched from "./components/LastFetched"
+
 function App(): JSX.Element {
 	return <>
-		<p>Meow Meow</p>
+		<LastFetched />
+		<CountryList />
 	</>
 }
 
