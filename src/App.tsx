@@ -1,5 +1,7 @@
 function App(): JSX.Element {
-	return <></>
+	return <>
+		<p>Meow Meow</p>
+	</>
 }
 
 export default App
