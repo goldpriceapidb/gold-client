@@ -2,7 +2,7 @@
 	font-family: GoogleSansMedium;
 	font-style: normal;
 	font-weight: 400;
-	src: url(./regular.woff2) format("woff2");
+	src: url(./assets/regular.woff2) format("woff2");
 	font-display: swap;
 }
 
