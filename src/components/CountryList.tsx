@@ -13,16 +13,19 @@ export default function CountryList(): JSX.Element {
         
         async function fetchStuff() {
             let countries = await get(IDB_GOLD_PRICE_STORAGE_KEY)
+            console.log(countries)
+            fuse = new Fuse(countries, {findAllMatches: true})
             setContents(countries)
         }
 
         let intervalId = setInterval(async() => {
             let didWeFetch = await get(FETCHED_DATA)
-            if(didWeFetch) {
-                await set(FETCHED_DATA, false)
-                console.log("Changed status")
-            }
+            if(didWeFetch == false) return
+            
+            await set(FETCHED_DATA, false)
+            console.log("Changed status")
             fetchStuff()
+            
         }, 1000)
 
         fetchStuff()
