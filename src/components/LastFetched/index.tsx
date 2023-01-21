@@ -1,5 +1,6 @@
 import { get, set } from "idb-keyval/dist/compat"
 import { useEffect, useState } from "react"
+import styles from "./lastFetched.module.css"
 
 import {
 	FETCH_URL,
@@ -10,6 +11,7 @@ import {
 
 function LastFetched(): JSX.Element {
 	let [lastUpdated, setLastUpdated] = useState("loading...")
+    let [refreshButton, setRefreshButton] = useState("Refresh")
 
     async function getLastUpdated() {
         let time = await get(IDB_LAST_UPDATED_TIME)
@@ -20,8 +22,14 @@ function LastFetched(): JSX.Element {
     }
 	
 	async function refetch() {
+        setRefreshButton("Refreshing...")
         await updateData()
 		setLastUpdated("Just now")
+        setRefreshButton("Done!")
+
+        let timeoutId = setTimeout(() => {
+            setRefreshButton("Refresh")
+        }, 500)
 	}
     
 	useEffect(() => {
@@ -34,14 +42,16 @@ function LastFetched(): JSX.Element {
 
 	return (
 		<>
-			<div>
+			<div className={styles.lastFetched}>
 				<p>Last refreshed: {lastUpdated}</p>
 				<button
+                    className={styles.refreshButton}
 					type="button"
 					aria-label="Re-fetch now"
 					onClick={refetch}
+                    title="Click to refresh rates"
 				>
-					Refresh
+					{refreshButton}
 				</button>
 			</div>
 		</>

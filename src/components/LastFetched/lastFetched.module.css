@@ -1,0 +1,18 @@
+.lastFetched {
+    display: flex;
+    font-size: 0.8rem;
+}
+
+.refreshButton {
+    outline: none;
+    background-color: transparent;
+    border: none;
+    text-decoration: underline;
+    cursor: pointer;
+    font-family: "GoogleSansMedium";
+    font-size: 0.7rem;
+}
+
+.lastFetched p {
+    margin: 0;
+}
