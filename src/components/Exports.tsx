@@ -2,7 +2,7 @@ export default function Exports(): JSX.Element {
 	return <></>
 }
 
-const FETCH_URL = "https://gold-price.cyclic.app/api/country/all"
+const FETCH_URL = "https://gold-price.hop.sh/api/country/all"
 const IDB_GOLD_PRICE_STORAGE_KEY = "goldData"
 const IDB_LAST_UPDATED_TIME = "lastUpdated"
 const FETCHED_DATA = "fetchedData"
